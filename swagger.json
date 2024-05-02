@@ -1,0 +1,13 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API's públicas",
+    "description": "API usada para ter acesso a vários tipos de dados de API's públicas",
+    "version": "1.0.0"
+  },
+  "basePath": "api/v1/",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {}
+}
