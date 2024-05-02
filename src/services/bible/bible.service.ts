@@ -1,11 +1,13 @@
 import axios, { AxiosInstance } from 'axios'
 import { Book, Chapter, VersionEnum, Version } from '../../models/bible.model'
 
+const token = process.env.TOKEN_BIBLE || ''
+
 const api: AxiosInstance = axios.create({
   baseURL: 'https://www.abibliadigital.com.br/api/',
   headers: {
     'Content-Type': 'Application/json',
-    'Authorization': `Bearer ${process.env.TOKEN_BIBLE}`
+    'Authorization': `Bearer ${token}`
   }
 })
 
