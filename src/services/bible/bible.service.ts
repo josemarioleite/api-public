@@ -28,7 +28,12 @@ class Bible {
     } else {
       const { data } = await api.get('books')
 
-      return data as Array<Book>
+      const booksLowerCase = data.map((book: Book) => ({
+        ...book,
+        name: book.name.toLowerCase(),
+      }))
+
+      return booksLowerCase as Array<Book>
     }
   }
 
