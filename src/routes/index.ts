@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import BibleController from '../controllers/bible.controller'
+import HolidayController from '../controllers/holiday.controller'
 
 const router = Router()
 
@@ -8,5 +9,8 @@ router.get('/bible/version', BibleController.getVersion)
 router.get('/bible/books', BibleController.getBooks)
 router.get('/bible/books/:abbrev', BibleController.getBookByAbbreviation)
 router.get('/bible/chapter/:version/:abbrev/:chapter', BibleController.getChapter)
+
+// Holiday
+router.get('/holiday/:year/:countryCode', HolidayController.getHoliday)
 
 export default router
