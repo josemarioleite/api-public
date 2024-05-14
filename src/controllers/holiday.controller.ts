@@ -1,5 +1,5 @@
 import { Response, Request } from 'express'
-import HolidayClass from '../services/holiday/holiday.service'
+import HolidayClass from '../services/holiday.service'
 
 const holiday = new HolidayClass()
 

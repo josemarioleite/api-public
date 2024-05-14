@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import BibleController from '../controllers/bible.controller'
 import HolidayController from '../controllers/holiday.controller'
+import ColorController from '../controllers/color.controller'
 
 const router = Router()
 
@@ -12,5 +13,8 @@ router.get('/bible/chapter/:version/:abbrev/:chapter', BibleController.getChapte
 
 // Holiday
 router.get('/holiday/:year/:countryCode', HolidayController.getHoliday)
+
+// Colors Generator
+router.post('/colors', ColorController.generateColor)
 
 export default router

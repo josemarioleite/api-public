@@ -5,9 +5,233 @@
     "description": "API usada para ter acesso a vários tipos de dados de API's públicas",
     "version": "1.0.0"
   },
-  "basePath": "api/v1/",
+  "basePath": "/api/v1/",
   "schemes": ["http", "https"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
-  "paths": {}
+  "paths": {
+    "/bible/version": {
+      "get": {
+        "tags": ["Bible"],
+        "summary": "Get Bible Version",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "King James Version"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bible/books": {
+      "get": {
+        "tags": ["Bible"],
+        "summary": "Get Bible Books",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bible/books/{abbrev}": {
+      "get": {
+        "tags": ["Bible"],
+        "summary": "Get Bible Book by Abbreviation",
+        "parameters": [
+          {
+            "name": "abbrev",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Abbreviation of the book"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Genesis"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bible/chapter/{version}/{abbrev}/{chapter}": {
+      "get": {
+        "tags": ["Bible"],
+        "summary": "Get Bible Chapter",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bible version"
+          },
+          {
+            "name": "abbrev",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Abbreviation of the book"
+          },
+          {
+            "name": "chapter",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Chapter number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "chapter": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "verses": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "verse_number": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "text": {
+                            "type": "string",
+                            "example": "In the beginning God created the heavens and the earth."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/holiday/{year}/{countryCode}": {
+      "get": {
+        "tags": ["Holiday"],
+        "summary": "Get Holiday",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Year"
+          },
+          {
+            "name": "countryCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Country Code (ISO 3166-1 alpha-2)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2024-12-25"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Christmas Day"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/colors": {
+      "post": {
+        "tags": ["Colors"],
+        "summary": "Adicionar uma nova cor",
+        "description": "Adiciona uma nova cor ao sistema.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "color",
+            "description": "Cor a ser adicionada",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cor inserida com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          }
+        }
+      }
+    }
+  }
 }

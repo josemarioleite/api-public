@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { Book, Chapter, VersionEnum, Version } from '../../models/bible.model'
+import { Book, Chapter, VersionEnum, Version } from '../models/bible.model'
 
 const token = process.env.TOKEN_BIBLE || ''
 

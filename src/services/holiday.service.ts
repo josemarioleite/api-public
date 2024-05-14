@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { Holiday } from '../../models/holiday.model'
+import { Holiday } from '../models/holiday.model'
 
 
 const api: AxiosInstance = axios.create({
