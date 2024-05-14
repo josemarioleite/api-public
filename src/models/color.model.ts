@@ -1,4 +1,4 @@
-type CorRGB = [number, number, number] | "N"
+export type CorRGB = [number, number, number] | "N"
 
 export interface Color {
   colors: [
